@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Comic Sans MS", cursive;
+  overflow: hidden;
+}
+
+/* 🌌 Night sky */
+.sky {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top, #1b0033, #000),
+    radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: cover, 40px 40px;
+  opacity: 1;
+  transition: opacity 1.5s ease;
+  z-index: 0;
+}
+
+/* 💖 Love glow (hidden initially) */
+.glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, #ff9aa2, #ff5fa2, #7a003c);
+  opacity: 0;
+  transition: opacity 2s ease;
+  z-index: 1;
+}
+
+.container {
+  text-align: center;
+  z-index: 2;
+  max-width: 90vw;
+}
+
+/* 💌 Text */
+h1 {
+  color: #ffd6f5;
+  min-height: 90px;
+  font-size: 22px;
+}
+
+/* 💑 Images */
+.couple-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 24px;
+  margin: 20px auto;
+  animation: cuddle 3s infinite ease-in-out;
+}
+
+.person {
+  width: 140px;
+  max-width: 40vw;
+  height: auto;
+}
+
+/* ❤️ After YES */
+.couple {
+  width: 260px;
+  max-width: 80vw;
+  animation: popIn 0.8s ease forwards;
+}
+
+@keyframes cuddle {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+@keyframes popIn {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* 💘 Button */
+button {
+  margin-top: 10px;
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: none;
+  background: #ff5fa2;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* 💥 Hearts */
+.heart {
+  position: absolute;
+  font-size: 24px;
+  animation: pop 1.4s forwards;
+  pointer-events: none;
+}
+
+@keyframes pop {
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
