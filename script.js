@@ -1,5 +1,5 @@
-const NAME = "YOUR NAME";
-const MESSAGE = `To ${NAME} ❤️
+const NAME = "Meri Bindi";
+const MESSAGE = `${NAME} ❤️
 I love you so much.
 You are my life.
 Happy Valentine’s Day 💖`;
@@ -65,3 +65,4 @@ document.addEventListener("click", (e) => {
     burst(e);
   }
 });
+
