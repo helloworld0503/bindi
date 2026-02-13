@@ -4,49 +4,68 @@
 
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   background: #000;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Comic Sans MS", cursive;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Comic Sans MS", cursive;
   overflow: hidden;
 }
 
-/* 🌌 Night sky */
-.sky {
-  position: absolute;
+/* 🎵 Overlay */
+#musicOverlay {
+  position: fixed;
   inset: 0;
+  background: radial-gradient(circle, #ff9aa2, #7a003c);
+  color: white;
+  font-size: clamp(20px, 5vw, 28px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  cursor: pointer;
+  text-align: center;
+  padding: 20px;
+  transition: opacity 1s ease;
+}
+
+/* 🌌 Backgrounds */
+.sky, .glow {
+  position: fixed;
+  inset: 0;
+}
+
+.sky {
   background:
     radial-gradient(circle at top, #1b0033, #000),
     radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size: cover, 40px 40px;
-  opacity: 1;
-  transition: opacity 1.5s ease;
   z-index: 0;
 }
 
-/* 💖 Love glow (hidden initially) */
 .glow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, #ff9aa2, #ff5fa2, #7a003c);
+  background: radial-gradient(circle, #ff9aa2, #ff5fa2, #7a003c);
   opacity: 0;
   transition: opacity 2s ease;
   z-index: 1;
 }
 
 .container {
-  text-align: center;
   z-index: 2;
-  max-width: 90vw;
+  text-align: center;
+  width: 100%;
+  max-width: 420px;
+  padding: 16px;
 }
 
 /* 💌 Text */
 h1 {
   color: #ffd6f5;
-  min-height: 90px;
-  font-size: 22px;
+  min-height: 80px;
+  font-size: clamp(16px, 4.5vw, 22px);
+  line-height: 1.4;
+  margin: 0 0 12px;
 }
 
 /* 💑 Images */
@@ -54,24 +73,45 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 24px;
-  margin: 20px auto;
+  gap: 16px;
+  margin: 12px auto;
   animation: cuddle 3s infinite ease-in-out;
 }
 
 .person {
-  width: 140px;
-  max-width: 40vw;
+  width: clamp(100px, 32vw, 150px);
   height: auto;
+  max-width: 100%;
 }
 
 /* ❤️ After YES */
 .couple {
-  width: 260px;
-  max-width: 80vw;
+  width: clamp(200px, 70vw, 300px);
+  max-width: 100%;
   animation: popIn 0.8s ease forwards;
 }
 
+/* 💘 Button */
+button {
+  margin-top: 10px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: none;
+  background: #ff5fa2;
+  color: white;
+  font-size: clamp(14px, 4vw, 16px);
+  cursor: pointer;
+}
+
+/* 💥 Hearts */
+.heart {
+  position: fixed;
+  font-size: clamp(18px, 5vw, 26px);
+  animation: pop 1.4s forwards;
+  pointer-events: none;
+}
+
+/* 🎞 Animations */
 @keyframes cuddle {
   0%,100% { transform: scale(1); }
   50% { transform: scale(1.04); }
@@ -82,33 +122,17 @@ h1 {
   to { transform: scale(1); opacity: 1; }
 }
 
-/* 💘 Button */
-button {
-  margin-top: 10px;
-  padding: 10px 18px;
-  border-radius: 20px;
-  border: none;
-  background: #ff5fa2;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  transform: scale(1.05);
-}
-
-/* 💥 Hearts */
-.heart {
-  position: absolute;
-  font-size: 24px;
-  animation: pop 1.4s forwards;
-  pointer-events: none;
-}
-
 @keyframes pop {
-  to {
-    transform: scale(2);
-    opacity: 0;
+  to { transform: scale(2); opacity: 0; }
+}
+
+/* 🖥 Larger screens */
+@media (min-width: 768px) {
+  .container {
+    max-width: 520px;
+  }
+
+  .couple-container {
+    gap: 24px;
   }
 }
